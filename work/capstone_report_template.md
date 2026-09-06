@@ -6,7 +6,12 @@
 - **Date:** September 6, 2026
 
 ---
+#### **Abstract & Introduction Excerpt**
 
+> **Context & Problem Framing:** Enterprise search management platforms face a fundamental resource allocation challenge: prioritizing editorial refreshes across portfolios spanning hundreds of thousands of URLs. Using **324,940 active enterprise content URLs** from the FlyRank internship warehouse, this case study addresses how short-term trailing search metrics and AI search interactions can be systematically transformed into decision-support priorities.
+>
+> **Findings:** Evaluating a **LightGBM regressor** against a **historical momentum baseline** under a domain-held-out `GroupKFold` validation split revealed that a simple **0.5× historical click baseline** achieved a superior test **MAE (0.85 clicks vs. 3.24 clicks for LightGBM)**. This demonstrates that short-term organic search performance across unseen enterprise clients is heavily momentum-driven. The resulting model and baseline signals are operationalized into a **4-archetype Content Action Playbook** (`STRIKING_DISTANCE`, `DECAY_RISK`, `AI_SNIPPET_OPP`, and `MAINTAIN`) to guide human-in-the-loop editorial workflows.
+---
 ## 1. Problem Framing
 
 This work supports resource allocation for monthly enterprise SEO and content refresh workflows. 
