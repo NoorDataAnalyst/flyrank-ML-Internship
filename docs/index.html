@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Traffic Prediction & Content Action Playbook | Research Paper</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #2563eb;
+      --accent: #0284c7;
+      --bg-gray: #f8fafc;
+      --border-color: #e2e8f0;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.7;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      color: var(--text-dark);
+      background-color: #ffffff;
+    }
+
+    header {
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .meta-info {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .abstract-box {
+      background: var(--bg-gray);
+      padding: 24px;
+      border-left: 5px solid var(--secondary);
+      border-radius: 6px;
+      margin-bottom: 35px;
+    }
+
+    .abstract-box h3 {
+      margin-top: 0;
+      color: var(--primary);
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+      margin-top: 40px;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 25px 0;
+    }
+
+    .kpi-card {
+      background: var(--bg-gray);
+      padding: 16px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .kpi-card .value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--secondary);
+      margin-bottom: 4px;
+    }
+
+    .kpi-card .label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--bg-gray);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fcfcfd;
+    }
+
+    .playbook-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .playbook-card {
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .playbook-card h4 {
+      margin-top: 0;
+      color: var(--secondary);
+      font-size: 1.1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      border-radius: 4px;
+      background: var(--bg-gray);
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .img-container {
+      margin: 25px 0;
+      text-align: center;
+    }
+
+    .img-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .img-caption {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.9em;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Search Traffic Prediction & Content Action Playbook</h1>
+    <div class="meta-info">
+      <span><strong>Author:</strong> Noor ul Ain Zahid</span>
+      <span><strong>Dataset:</strong> FlyRank Internship Warehouse</span>
+      <span><strong>Scope:</strong> Enterprise Search Optimization</span>
+    </div>
+  </header>
+
+  <section class="abstract-box">
+    <h3>Executive Summary</h3>
+    <p>
+      Managing large enterprise web properties requires deciding which pages to update to maximize organic search traffic. This study evaluates whether machine learning models can accurately forecast 10-day forward organic clicks across <strong>324,940 content URLs</strong> using trailing 20-day engagement metrics and generative AI search signals.
+    </p>
+    <p>
+      Evaluating a LightGBM regressor against a historical momentum baseline across held-out client domains revealed that a simple proportional baseline outperformed gradient boosting (<strong>Test MAE: 0.85 vs. 3.24 clicks</strong>). This demonstrates that short-term search performance is heavily momentum-driven across unseen enterprise accounts. These predictive insights are operationalized into a 4-archetype <strong>Content Action Playbook</strong> to prioritize human-in-the-loop editorial workflows efficiently.
+    </p>
+  </section>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="value">324,940</div>
+      <div class="label">Analyzed Content URLs</div>
+    </div>
+    <div class="kpi-card">
+      <div class="value">0.85</div>
+      <div class="label">Baseline MAE (Clicks)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="value">0.64</div>
+      <div class="label">Baseline Rank Correlation</div>
+    </div>
+    <div class="kpi-card">
+      <div class="value">4 Archetypes</div>
+      <div class="label">Actionable Strategies</div>
+    </div>
+  </div>
+
+  <h2>1. Problem Statement & Business Context</h2>
+  <p>
+    Enterprise search teams manage portfolios containing hundreds of thousands of active web pages. With limited editorial capacity, manually auditing every page is impossible. Automated, data-driven prioritization is essential to identify which pages are close to page-one breakthroughs, which high-traffic pages are decaying, and which pages are eligible for generative AI search overviews.
+  </p>
+
+  <h2>2. Data Safety & Privacy Design</h2>
+  <p>
+    The dataset originates from the FlyRank internship warehouse, capturing performance across multiple enterprise clients.
+  </p>
+  <ul>
+    <li><strong>Observation Window:</strong> Features extracted from June 1–20, 2026; target organic clicks measured from June 21–30, 2026.</li>
+    <li><strong>Data Anonymization:</strong> All client identifiers (`client_hash_id`) and content permalinks (`content_hash_id`) are strictly cryptographically hashed. No raw URLs or client PII exist within the workspace.</li>
+    <li><strong>Leakage Prevention:</strong> Future traffic signals and label-derived metrics were strictly omitted from feature matrices to prevent temporal data leakage.</li>
+  </ul>
+
+  <h2>3. Methodology & Validation Strategy</h2>
+  <p>
+    We evaluated a <strong>LightGBM regressor</strong> (trained on log-transformed targets) against a <strong>Historical Momentum Baseline</strong> (scaling trailing 20-day clicks by 0.5 to estimate a 10-day forward window).
+  </p>
+  <p>
+    To rigorously test real-world deployment, model evaluation was conducted using a 5-fold <strong>GroupKFold cross-validation</strong> split grouped strictly by `client_hash_id`. This ensures the model is evaluated on entirely unseen enterprise client domains, preventing domain-level authority leakage.
+  </p>
+
+  <h2>4. Evaluation Results</h2>
+  <p>
+    Evaluation metrics reflect out-of-fold predictions on unseen client domains:
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Model Variant</th>
+        <th>Validation Split</th>
+        <th>Test MAE (Lower is Better)</th>
+        <th>Spearman Rank Correlation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Historical Momentum Baseline</strong> (0.5x 20d Clicks)</td>
+        <td>GroupKFold (Client Domain)</td>
+        <td><strong>0.85 clicks</strong></td>
+        <td><strong>0.64</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Honest LightGBM Regressor</strong></td>
+        <td>GroupKFold (Client Domain)</td>
+        <td>3.24 clicks</td>
+        <td>0.32</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>5. Key Insights & Limitations</h2>
+  <p>
+    The validation results reveal a critical domain generalization insight:
+  </p>
+  <ul>
+    <li><strong>Momentum Dominance:</strong> Short-term organic search performance is highly deterministic. Proportional historical scaling remains the most reliable predictor across unseen domains.</li>
+    <li><strong>Cross-Domain Variance:</strong> Machine learning tree models trained across diverse clients incur cross-domain variance penalties when evaluating new accounts without domain-specific traffic embeddings.</li>
+  </ul>
+
+  <h2>6. Strategic Content Action Playbook</h2>
+  <p>
+    To turn these traffic predictions into human-in-the-loop editorial decisions, pages are mapped into four operational archetypes:
+  </p>
+
+  <div class="playbook-grid">
+    <div class="playbook-card">
+      <span class="badge">CTR & Intent Focus</span>
+      <h4>1. Striking Distance (<code>STRIKING_DISTANCE</code>)</h4>
+      <p><strong>Criteria:</strong> Ranking positions #4–#20 with high search impressions.</p>
+      <p><strong>Action:</strong> Optimize page titles, meta descriptions, and search intent alignment to drive page-one position gains.</p>
+    </div>
+
+    <div class="playbook-card">
+      <span class="badge">Content Protection</span>
+      <h4>2. Decay Risk (<code>DECAY_RISK</code>)</h4>
+      <p><strong>Criteria:</strong> Historically high traffic pages exhibiting predicted volume drops.</p>
+      <p><strong>Action:</strong> Perform fact updates, refresh publish dates, and strengthen internal linking to recover traffic momentum.</p>
+    </div>
+
+    <div class="playbook-card">
+      <span class="badge">Generative Search</span>
+      <h4>3. AI Overview Opportunity (<code>AI_SNIPPET_OPP</code>)</h4>
+      <p><strong>Criteria:</strong> Top-5 ranking pages displaying active AI search sessions.</p>
+      <p><strong>Action:</strong> Reformat content sections into concise Q&A blocks and structured summary tables for snippet capture.</p>
+    </div>
+
+    <div class="playbook-card">
+      <span class="badge">Automated Monitoring</span>
+      <h4>4. Maintain Portfolio (<code>MAINTAIN</code>)</h4>
+      <p><strong>Criteria:</strong> Stable baseline performance across low-volume or evergreen URLs.</p>
+      <p><strong>Action:</strong> No immediate editorial expenditure required; maintain automated monitoring.</p>
+    </div>
+  </div>
+
+  <h2>7. Governance & Human-in-the-Loop Guardrails</h2>
+  <ul>
+    <li><strong>No Unreviewed Auto-Publishing:</strong> Generative AI rewrites must undergo human editorial review before publishing.</li>
+    <li><strong>Compliance & YMYL Exclusions:</strong> Medical, legal, and financial advisory pages are excluded from automated optimization queues.</li>
+    <li><strong>URL & Architecture Locks:</strong> Permalinks, canonical tags, and page structures remain locked unless approved by a technical SEO specialist.</li>
+  </ul>
+
+  <footer>
+    <p>Built on the <a href="https://flyrank.ai" target="_blank" rel="noopener">FlyRank ML Internship dataset</a>.</p>
+    <p>&copy; 2026 Noor ul Ain Zahid. Published via GitHub Pages.</p>
+  </footer>
+
+</body>
+</html>
